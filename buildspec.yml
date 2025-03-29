@@ -2,13 +2,15 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 22
+#    runtime-versions:
+#      nodejs: 22
     commands: []
   pre_build:
     commands: []
   build:
-    commands: []
+    commands:
+      - 'echo "{ \"hash\": \"${CODEBUILD_RESOLVED_SOURCE_VERSION}\", \"timestamp\": \"`date -Iseconds`\" }" > content/version.json'
+      - cat content/version.json
   post_build:
     commands: []
 
